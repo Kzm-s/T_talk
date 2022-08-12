@@ -73,4 +73,20 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # for_rails-flog
+  Flog.configure do |config|
+    # If this value is true, not format on cached query
+    config.ignore_cached_query = false
+    # If query duration is under this value, not format
+    config.query_duration_threshold = 2.0
+    # If key count of parameters is under this value, not format
+    config.params_key_count_threshold = 2
+    # If this value is true, nested Hash parameter is formatted coercively in any situation
+    config.force_on_nested_params = false
+    # If this value is true, not format query
+    config.ignore_query = true
+    # If this value is true, not format parameters
+    config.ignore_params = true
+  end
 end
