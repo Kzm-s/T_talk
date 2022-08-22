@@ -1,2 +1,0 @@
-class UserPosition < ApplicationRecord
-end
