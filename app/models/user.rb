@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  enum gender: { "男性": 1, "女性": 2 }
-  enum job_title: { "校長": 1, "副校長": 2, "教頭": 3, "主幹教諭": 4, "指導教諭": 5, "指導主事": 6, "教諭": 7, "養護教諭": 8, "常勤講師": 9, "非常勤講師": 10, "その他": 11 }
-  enum career: { "1年未満": 1, "1年目": 2, "2年目": 3, "3年目": 4, "4年目": 5, "5年目": 6, "6年目": 7, "7年目": 8, "8年目": 9, "9年目": 10, "10年目": 11, "11年目": 12, "12年目": 13, "13年目": 14, "14年目": 15, "15年目": 16, "16年目": 17, "17年目": 18, "18年目": 19, "19年目": 20, "20年目": 21, "20年以上": 22 }
-  enum subject: { "算数": 1, "国語": 2, "理科": 3, "社会": 4, "体育": 5, "音楽": 6, "家庭": 7, "外国語": 8, "図画工作": 9, "生活": 10, "道徳": 11, "それ以外": 12 }
-  enum grade: {  "なし": 1, "1年生": 2, "2年生": 3, "3年生": 4, "4年生": 5, "5年生": 6, "6年生": 7, "特別支援学級": 8 }
-  enum other: { "そのほか": 1, "ない": 2 }
+  enum gender: { man: 0, woman: 1 }, _prefix: true
+  enum job_title: { principal: 0, second_master: 1, head: 2, senior_teacher: 3, leading_teacher: 4, supervisor: 5, teacher: 6, school_nurce: 7, full_time_teacher: 8, part_time_teacher: 9, other: 10 }, _prefix: true
+  enum career: { under_one: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20, over_twenty: 21 }, _prefix: true
+  enum subject: { math: 0, japanese: 1, science: 2, social_study: 3, PE: 4, music: 5, home_economic: 6, english: 7, arts_and_crafts: 8, lifestyle: 9, moral: 10, other: 11 }, _prefix: true
+  enum grade: {  none: 0, first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6, special: 7 }, _prefix: true
+  enum other: { none: 0, other: 1 }, _prefix: true
 end
