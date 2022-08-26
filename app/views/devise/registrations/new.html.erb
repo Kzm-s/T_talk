@@ -3,16 +3,19 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <br>
   <div class="field">
-    <%= f.label :名前 %><br />
+    <%= f.label :name, '名前' %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
 
+  <br>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <br>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -21,54 +24,172 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+  <br>
   <div class="field">
     <%= f.label :password（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :生年月日 %><br />
+    <%= f.label :birth, '生年月日' %><br />
     <%= f.text_field :birth, autofocus: true %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :性別 %><br />
-    <%= f.text_field :gender, autofocus: true %>
+    <%= f.label :gender, '性別' %><br />
+    <%= f.label :gender, :"男性" %>
+    <%= f.radio_button :gender, 1 %>
+    <%= f.label :gender, :"女性" %>
+    <%= f.radio_button :gender, 2 %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :所属校 %><br />
+    <%= f.label :affiliation, '所属校' %><br />
     <%= f.text_field :affiliation, autofocus: true %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :職名 %><br />
-    <%= f.text_field :job_title, autofocus: true %>
+    <%= f.label :job_title, '職名' %><br />
+    <%= f.label :job_title, :"校長" %>
+    <%= f.radio_button :job_title, 1 %>
+    <%= f.label :job_title, :"副校長" %>
+    <%= f.radio_button :job_title, 2 %>
+    <%= f.label :job_title, :"教頭" %>
+    <%= f.radio_button :job_title, 3 %>
+    <%= f.label :job_title, :"主幹教諭" %>
+    <%= f.radio_button :job_title, 4 %>
+    <%= f.label :job_title, :"指導教諭" %>
+    <%= f.radio_button :job_title, 5 %>
+    <%= f.label :job_title, :"指導主事" %>
+    <%= f.radio_button :job_title, 6 %><br />
+    <%= f.label :job_title, :"教諭" %>
+    <%= f.radio_button :job_title, 7 %>
+    <%= f.label :job_title, :"養護教諭" %>
+    <%= f.radio_button :job_title, 8 %>
+    <%= f.label :job_title, :"常勤講師" %>
+    <%= f.radio_button :job_title, 9 %>
+    <%= f.label :job_title, :"非常勤講師" %>
+    <%= f.radio_button :job_title, 10 %>
+    <%= f.label :job_title, :"その他" %>
+    <%= f.radio_button :job_title, 11 %>
+  </div>
+  
+  <br>
+  <div class="field">
+    <%= f.label :career, '教員歴' %><br />
+    <%= f.label :career, :"1年未満" %>
+    <%= f.radio_button :career, 1 %>
+    <%= f.label :career, :"1年目" %>
+    <%= f.radio_button :career, 2 %>
+    <%= f.label :career, :"2年目" %>
+    <%= f.radio_button :career, 3 %>
+    <%= f.label :career, :"3年目" %>
+    <%= f.radio_button :career, 4 %>
+    <%= f.label :career, :"4年目" %>
+    <%= f.radio_button :career, 5 %><br />
+    <%= f.label :career, :"5年目" %>
+    <%= f.radio_button :career, 6 %>
+    <%= f.label :career, :"6年目" %>
+    <%= f.radio_button :career, 7 %>
+    <%= f.label :career, :"7年目" %>
+    <%= f.radio_button :career, 8 %>
+    <%= f.label :career, :"8年目" %>
+    <%= f.radio_button :career, 9 %>
+    <%= f.label :career, :"9年目" %>
+    <%= f.radio_button :career, 10 %><br />
+    <%= f.label :career, :"10年目" %>
+    <%= f.radio_button :career, 11 %>
+    <%= f.label :career, :"11年目" %>
+    <%= f.radio_button :career, 12 %>
+    <%= f.label :career, :"12年目" %>
+    <%= f.radio_button :career, 13 %>
+    <%= f.label :career, :"13年目" %>
+    <%= f.radio_button :career, 14 %>
+    <%= f.label :career, :"14年目" %><br />
+    <%= f.radio_button :career, 15 %>
+    <%= f.label :career, :"15年目" %>
+    <%= f.radio_button :career, 16 %>
+    <%= f.label :career, :"16年目" %>
+    <%= f.radio_button :career, 17 %>
+    <%= f.label :career, :"17年目" %>
+    <%= f.radio_button :career, 18 %>
+    <%= f.label :career, :"18年目" %>
+    <%= f.radio_button :career, 19 %>
+    <%= f.label :career, :"19年目" %>
+    <%= f.radio_button :career, 20 %><br />
+    <%= f.label :career, :"20年目" %>
+    <%= f.radio_button :career, 21 %>
+    <%= f.label :career, :"20年以上" %>
+    <%= f.radio_button :career, 22 %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :教員歴 %><br />
-    <%= f.text_field :career, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :校務分掌 %><br />
+    <%= f.label :responsible, '校務分掌' %><br />
     <%= f.text_field :responsible, autofocus: true %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :担当教科（主任） %><br />
-    <%= f.text_field :subject, autofocus: true %>
+    <%= f.label :subject, '担当教科（主任）' %><br />
+    <%= f.label :subject, :"算数" %>
+    <%= f.radio_button :subject, 1 %>
+    <%= f.label :subject, :"国語" %>
+    <%= f.radio_button :subject, 2 %>
+    <%= f.label :subject, :"理科" %>
+    <%= f.radio_button :subject, 3 %>
+    <%= f.label :subject, :"社会" %>
+    <%= f.radio_button :subject, 4 %>
+    <%= f.label :subject, :"体育" %>
+    <%= f.radio_button :subject, 5 %>
+    <%= f.label :subject, :"音楽" %>
+    <%= f.radio_button :subject, 6 %><br />
+    <%= f.label :subject, :"家庭" %>
+    <%= f.radio_button :subject, 7 %>
+    <%= f.label :subject, :"外国語" %>
+    <%= f.radio_button :subject, 8 %>
+    <%= f.label :subject, :"図画工作" %>
+    <%= f.radio_button :subject, 9 %>
+    <%= f.label :subject, :"生活" %>
+    <%= f.radio_button :subject, 10 %>
+    <%= f.label :subject, :"道徳" %>
+    <%= f.radio_button :subject, 11 %>
+    <%= f.label :subject, :"その他" %>
+    <%= f.radio_button :subject, 12 %>
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :担当学年 %><br />
-    <%= f.text_field :grade, autofocus: true %>
+    <%= f.label :grade, '担当教科（主任）' %><br />
+    <%= f.label :grade, :"なし" %>
+    <%= f.radio_button :grade, 1 %>
+    <%= f.label :grade, :"1年生" %>
+    <%= f.radio_button :grade, 2 %>
+    <%= f.label :grade, :"2年生" %>
+    <%= f.radio_button :grade, 3 %>
+    <%= f.label :grade, :"3年生" %>
+    <%= f.radio_button :grade, 4 %><br />
+    <%= f.label :grade, :"4年生" %>
+    <%= f.radio_button :grade, 5 %>
+    <%= f.label :grade, :"5年生" %>
+    <%= f.radio_button :grade, 6 %>
+    <%= f.label :grade, :"6年生" %>
+    <%= f.radio_button :grade, 7 %>
+    <%= f.label :grade, :"特別支援学級" %>
+    <%= f.radio_button :grade, 8 %> 
   </div>
 
+  <br>
   <div class="field">
-    <%= f.label :その他 %><br />
-    <%= f.text_field :other, autofocus: true %>
+    <%= f.label :other, 'その他' %><br />
+    <%= f.label :other, :"なし" %>
+    <%= f.radio_button :other, 1 %>
+    <%= f.label :other, :"その他" %>
+    <%= f.radio_button :other, 2 %>
   </div>
 
   <div class="actions">
