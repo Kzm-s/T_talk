@@ -1,13 +1,27 @@
 class CommentsController < ApplicationController
-    def create
+
+    def edit
+        @post = Post.find(params[:post_id])
+        @comment = Comment.find(params[:id])
+    end
+
+    
+    def update
       @post = Post.find(params[:post_id])
-      @comment = current_user.comments.build(comment_params)
-      if @comment.save
-        redirect_to request.referer, notice: "コンテンツを投稿しました"
+      @comment = Comment.find(params[:id])
+      if @comment.update(comment_params)
+        redirect_to post_path(@post), notice: "コンテンツを投稿しました"
       else
-        flash[:danger] = "投稿に失敗しました"
-        redirect_back(fallback_location: root_path)
+        flash.now[:danger] = "投稿に失敗しました"
+        render 'edit'
       end
+    end
+
+    def destroy
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        flash[:danger] = "コメントを削除しました"
+        redirect_back(fallback_location: root_path)
     end
     
       private
