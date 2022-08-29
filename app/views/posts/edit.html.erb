@@ -1,0 +1,11 @@
+<div>
+<%# ログインしているときは以下を表示する %>
+    <% if user_signed_in? %>
+    <div> 
+        <%= "edit,edit,edit.edit,edit" %>
+    </div>
+    <% end %>
+</div>
+<div>
+    <%= render partial: 'posts/form' %>
+</div>

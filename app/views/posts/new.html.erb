@@ -1,0 +1,10 @@
+<div>
+    <%# ログインしているときは以下を表示する %>
+    <% if user_signed_in? %>
+    <div> 
+        <%= "new" %>
+    </div>
+    <% end %>
+</div>
+
+<%= render partial: 'posts/form' %>

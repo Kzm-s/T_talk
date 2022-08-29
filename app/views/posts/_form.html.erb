@@ -1,0 +1,37 @@
+<%= form_with model: @post, local: true do |f|%>
+
+  <div class="field">
+    <%= f.label :type, '投稿の種類' %><br />
+    <%= f.label :type, :"教育" %>
+    <%= f.radio_button :type, :education %>
+    <%= f.label :type, :"相談" %>
+    <%= f.radio_button :type, :advise %>
+  </div>
+
+  <div class="field"><br>
+    <%= f.label :title, "タイトル" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field"><br>
+    <%= f.label :content, "コンテンツ" %><br />
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field"><br>
+    <%= f.label :image, "画像" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field"><br>
+    <%= f.label :status, '公開/非公開' %><br />
+    <%= f.label :status, :"公開" %>
+    <%= f.radio_button :status, :open %>
+    <%= f.label :status, :"非公開" %>
+    <%= f.radio_button :status, :hidden %>
+  </div>
+
+  <div class="actions"><br>
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
