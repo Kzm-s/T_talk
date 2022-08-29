@@ -10,4 +10,6 @@ class User < ApplicationRecord
   enum subject: { math: 0, japanese: 1, science: 2, social_study: 3, PE: 4, music: 5, home_economic: 6, english: 7, arts_and_crafts: 8, lifestyle: 9, moral: 10, other: 11 }, _prefix: true
   enum grade: {  none: 0, first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6, special: 7 }, _prefix: true
   enum other: { none: 0, other: 1 }, _prefix: true
+
+  has_many :posts
 end
