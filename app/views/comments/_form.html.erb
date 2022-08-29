@@ -1,0 +1,16 @@
+<%= form_with model: [@post, @comment] do |f|%>
+
+  <div class="field">
+    <%= f.label :comment_content, "コメント編集" %></br>
+    <%= f.text_field :comment_content %>
+    <%= f.label :status, '公開/非公開' %><br />
+    <%= f.label :status, :"公開" %>
+    <%= f.radio_button :status, :open %>
+    <%= f.label :status, :"非公開" %>
+    <%= f.radio_button :status, :hidden %><br>
+  </div>
+
+  <div class="submit">
+    <%= f.submit "送信"%>
+  </div>
+<% end %>
