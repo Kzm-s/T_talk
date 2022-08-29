@@ -12,4 +12,5 @@ class User < ApplicationRecord
   enum other: { none: 0, other: 1 }, _prefix: true
 
   has_many :posts
+  has_many :comments, dependent: :destroy
 end

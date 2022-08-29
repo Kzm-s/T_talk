@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :move_to_index, except: [:index, :show]
-
+  
   def index
       @post = Post.all
   end
@@ -22,8 +21,8 @@ class PostsController < ApplicationController
 
   def show
       @post = Post.find(params[:id])
-      # @comment = Comment.new
-      # @comments = @post.comments.includes(:user)
+      @comment = Comment.new
+      @comments = @post.comments.includes(:user)
   end
 
   def edit
@@ -51,10 +50,5 @@ class PostsController < ApplicationController
       params.require(:post).permit(:type, :title, :content, :image, :status).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-      unless user_signed_in?
-          redirect_to action: :index
-      end
-  end
 
 end
