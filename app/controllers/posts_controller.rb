@@ -45,10 +45,10 @@ class PostsController < ApplicationController
       end
   end
 
-  private 
-  def post_params
-      params.require(:post).permit(:type, :title, :content, :image, :status).merge(user_id: current_user.id)
-  end
+    private 
 
-
+    def post_params
+        params.require(:post).permit(:type, :title, :content, :image, :status, tag_ids: []).merge(user_id: current_user.id)
+    end
+    
 end
