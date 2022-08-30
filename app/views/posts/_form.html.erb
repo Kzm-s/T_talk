@@ -1,4 +1,4 @@
-<%= form_for @post, local: true do |f|%>
+<%= form_with model: @post, local: true do |f|%>
 
   <div class="check_box">
     <span>タグ</span>
@@ -6,9 +6,10 @@
       <div>
         <%= tag.label do %>
           <%= tag.check_box %>
+          <%= tag.text %>
         <% end %>
       </div>
-    <% end %>
+    <% end %><br>
   </div>
 
   <div class="field">
