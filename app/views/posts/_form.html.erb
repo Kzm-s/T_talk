@@ -1,5 +1,17 @@
 <%= form_with model: @post, local: true do |f|%>
 
+  <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %><br>
+  </div>
+
   <div class="field">
     <%= f.label :type, '投稿の種類' %><br />
     <%= f.label :type, :"教育" %>

@@ -2,7 +2,19 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   
   def index
-      @post = Post.all
+      @posts = Post.all
+
+    #タグ検索
+    if params[:tag_ids]
+        @posts = []
+        params[:tag_ids].each do |key, value|
+          if value == "1"
+            post_tags = Tag.find_by(name: key).posts
+            @posts = @posts.empty? ? post_tags : @posts & post_tags
+          end
+        end
+    end
+
   end
 
   def new
@@ -23,6 +35,13 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @comment = Comment.new
       @comments = @post.comments.includes(:user)
+
+      if @post.status_private? && @post.user != current_user
+        respond_to do |format|
+          format.html { redirect_to posts_path, notice: 'このページにはアクセスできません' }
+        end
+      end
+      
   end
 
   def edit
@@ -45,10 +64,10 @@ class PostsController < ApplicationController
       end
   end
 
-  private 
-  def post_params
-      params.require(:post).permit(:type, :title, :content, :image, :status).merge(user_id: current_user.id)
-  end
+    private 
 
-
+    def post_params
+        params.require(:post).permit(:type, :title, :content, :image, :status, tag_ids: []).merge(user_id: current_user.id)
+    end
+    
 end
