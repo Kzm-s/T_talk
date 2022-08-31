@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_23_081050) do
+ActiveRecord::Schema.define(version: 2022_08_30_092021) do
 
   create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_08_23_081050) do
 
   create_table "posts", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "type"
+    t.integer "post_type"
     t.string "title", null: false
     t.text "content", null: false
     t.string "image"
