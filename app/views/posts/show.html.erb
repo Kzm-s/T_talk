@@ -1,41 +1,41 @@
 
 <div>
-    <p>
-      <%= @post.title %>
-    </p>
-    <%= link_to "by" + @post.user.name, root_path %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <%= link_to "by" + @post.user.name, user_path(current_user.id) %>
       <div>
         <%= link_to "編集する", edit_post_path(@post) %>
         <%= link_to "削除する", post_path(@post), method: :delete %>
-      </div>
-      <ul>
-      <% @post.tags.each do |tag| %>
-        <li><span><%= tag.name %></span></li>
+      </div><br>
+  <% end %>
+
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
+        <img class="card-img-top">
+        <strong>画像</strong><br>
+        <%= image_tag @post.image.url %>
       <% end %>
-      </ul>
-    
-      <div>
-        <p>タイトル</p>
-        <p>
-          <%= @post.title %>
-        </p>
-      </div>
-
-      <div>
-        <p>画像</p>
-        <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
-          <p>
-          <%= image_tag @post.image.url, size: '320x240' %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-          </p>
-        <% end %>
-      </div>
-
-        <div>
-          <p>内容</p>
-          <p>
-            <%= @post.content %>
-          </p>
+      <div class="card-body">
+        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+        <p class="card-text"><%= @post.title %></p>
+        <p class="card-text"> <%= @post.content %></p>
+        <%= "by " + @post.user.name %>
+        <ul>
+            <% @post.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+          </div>
+          <!-- <small class="text-muted">9 mins</small> -->
+          <small class="text-muted">9分</small>
         </div>
+      </div>
+    </div>
+  </div>
 
         <h3>コメント一覧</h3>
         <% @comments.each do |c| %>
