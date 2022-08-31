@@ -1,21 +1,12 @@
-<div>
-<%# ログインしているときは以下を表示する %>
-    <% if user_signed_in? %>
-    <div> 
-        <%= "show" %>
-    </div>
-    <% end %>
-</div>
 
 <div>
-    <p>
-      <%= @post.title %>
-    </p>
-    <%= link_to "by" + @post.user.name, root_path %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <%= link_to "by" + @post.user.name, user_path(current_user.id) %>
       <div>
         <%= link_to "編集する", edit_post_path(@post) %>
         <%= link_to "削除する", post_path(@post), method: :delete %>
-      </div>
+      </div><br>
+  <% end %>
       <ul>
       <% @post.tags.each do |tag| %>
         <li><span><%= tag.name %></span></li>
