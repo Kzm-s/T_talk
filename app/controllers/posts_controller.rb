@@ -35,6 +35,12 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @comment = Comment.new
       @comments = @post.comments.includes(:user)
+
+      if @post.status_private? && @post.user != current_user
+        respond_to do |format|
+          format.html { redirect_to posts_path, notice: 'このページにはアクセスできません' }
+        end
+      end
       
   end
 
