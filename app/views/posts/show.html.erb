@@ -1,4 +1,3 @@
-
 <div>
   <% if user_signed_in? && current_user.id == @post.user_id %>
     <%= link_to "by" + @post.user.name, user_path(current_user.id) %>
@@ -7,7 +6,6 @@
         <%= link_to "削除する", post_path(@post), method: :delete %>
       </div><br>
   <% end %>
-
   <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
       <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
@@ -36,30 +34,25 @@
       </div>
     </div>
   </div>
-
         <h3>コメント一覧</h3>
         <% @comments.each do |c| %>
           <%= c.comment_content %><br>
           <% if user_signed_in? %>  
-            <% if current_user.id == c.user_id %>  
-              <%= link_to "編集", edit_post_comment_path(@post, c) %> 
-              <%= link_to "削除", post_comment_path(@post, c), method: :delete %>  
-            <% elsif current_user.id == @post.user_id then %>  
-              <%= link_to "削除", post_comment_path(@output, c), method: :delete %> 
+            <% if current_user.id == @comment.user_id %>  
+              <button><%= link_to "削除", post_comment_path(@post, c), method: :delete %></button>
             <% end %> <br>
-          <% end %>
-        <% end %>
-        
+          <% end %>  
+        <% end %> 
         <% if user_signed_in? %>
           <%= form_with model: [@post, @comment] do |f| %>
             <%= f.text_area :comment_content, placeholder: "コメントする" %><br>
-            <%= f.label :status, '公開/非公開' %><br />
+            <%= f.label :status, '公開/非公開' %><br/>
             <%= f.label :status, :"公開" %>
             <%= f.radio_button :status, :open %>
             <%= f.label :status, :"非公開" %>
             <%= f.radio_button :status, :hidden %><br>
             <%= f.submit "SEND" %>
           <% end %>
-        <% end %><br>
-
+        <% end %>
+      
         <button><%= link_to "投稿一覧に戻る", root_path %></button>
