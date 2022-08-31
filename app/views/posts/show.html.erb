@@ -19,16 +19,11 @@
           <%= @post.title %>
         </p>
       </div>
-
-      <div>
-        <p>画像</p>
-        <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
-          <p>
-          <%= image_tag @post.image.url, size: '320x240' %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-          </p>
-        <% end %>
-      </div>
-
+      <% if @post.image == nil? %>
+        <div>
+        <%= image_tag @post.image %>
+        </div>
+      <% end %>
         <div>
           <p>内容</p>
           <p>
@@ -59,6 +54,4 @@
             <%= f.radio_button :status, :hidden %><br>
             <%= f.submit "SEND" %>
           <% end %>
-        <% end %><br>
-
-        <button><%= link_to "投稿一覧に戻る", root_path %></button>
+        <% end %>
