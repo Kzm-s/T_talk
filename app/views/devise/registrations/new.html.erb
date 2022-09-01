@@ -52,6 +52,7 @@
   </div><br>
 
   <div class='field'>
+    <%= "校務分掌" %><br>
     <%= f.collection_check_boxes(:position_ids, Position.all, :id, :name) do |position| %>
             <%= position.label class: 'form-check-label' do %>
                 <%= position.check_box class: 'form-check-input' %>
@@ -138,7 +139,7 @@
 
   <br>
   <div class="field">
-    <%= f.label :responsible, '校務分掌' %><br />
+    <%= f.label :responsible, '主な校務分掌' %><br />
     <%= f.text_field :responsible, autofocus: true %>
   </div>
 
