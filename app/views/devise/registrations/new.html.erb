@@ -49,9 +49,18 @@
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
     <%= f.text_field :affiliation, autofocus: true %>
-  </div>
+  </div><br>
 
-  <br>
+  <div class='field'>
+    <%= f.collection_check_boxes(:position_ids, Position.all, :id, :name) do |position| %>
+            <%= position.label class: 'form-check-label' do %>
+                <%= position.check_box class: 'form-check-input' %>
+                <%= position.text %>
+            <% end %>
+    <% end %>
+  </div><br>
+
+
   <div class="field">
     <%= f.label :job_title, '職名' %><br />
     <%= f.label :job_title, :"校長" %>
