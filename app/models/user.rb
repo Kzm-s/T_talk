@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :user_positions, dependent: :destroy
   has_many :positions, through: :user_positions, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy

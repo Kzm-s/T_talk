@@ -36,6 +36,10 @@
       </div>
     </div>
   </div>
+
+  <%= render partial: "likes/like" %>
+
+
         <h3>コメント一覧</h3>
         <% @comments.each do |c| %>
           <%= c.comment_content %><br>
