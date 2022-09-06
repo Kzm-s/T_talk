@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_01_100714) do
+ActiveRecord::Schema.define(version: 2022_09_05_235927) do
 
   create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 2022_09_01_100714) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.text "content"
+    t.string "image"
+    t.boolean "is_check", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notices", charset: "utf8", force: :cascade do |t|
@@ -89,6 +101,13 @@ ActiveRecord::Schema.define(version: 2022_09_01_100714) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "rooms", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
   create_table "tags", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -102,6 +121,15 @@ ActiveRecord::Schema.define(version: 2022_09_01_100714) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["position_id"], name: "index_user_positions_on_position_id"
     t.index ["user_id"], name: "index_user_positions_on_user_id"
+  end
+
+  create_table "user_rooms", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_user_rooms_on_room_id"
+    t.index ["user_id"], name: "index_user_rooms_on_user_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -130,6 +158,8 @@ ActiveRecord::Schema.define(version: 2022_09_01_100714) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "notices", "admins"
   add_foreign_key "notices", "users"
   add_foreign_key "post_tags", "posts"
@@ -137,6 +167,9 @@ ActiveRecord::Schema.define(version: 2022_09_01_100714) do
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "rooms", "users"
   add_foreign_key "user_positions", "positions"
   add_foreign_key "user_positions", "users"
+  add_foreign_key "user_rooms", "rooms"
+  add_foreign_key "user_rooms", "users"
 end
