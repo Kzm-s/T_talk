@@ -1,4 +1,4 @@
-Tag.create([
+Tag.create!([
     { name: '学習指導'},
     { name: '児童指導'},
     { name: '校務分掌'},
@@ -12,7 +12,7 @@ Tag.create([
     { name: 'その他'}
 ])
 
-Position.create([
+Position.create!([
     { name: '学年主任'},
     { name: '児童指導'},
     { name: '安全指導'},
@@ -21,3 +21,4 @@ Position.create([
     { name: '委員会'},
     { name: 'クラブ活動'}
 ])
+
