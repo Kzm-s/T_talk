@@ -1,0 +1,21 @@
+<div>
+    <%# ログインしているときは以下を表示する %>
+        <% if user_signed_in? %>
+            <% if current_user == @user %>
+                <div> 
+                    <h2>自分の投稿</h2>
+                </div>
+                <div>
+                    <%= render partial: 'posts/form' %>
+                </div>
+            <% elsif current_user.admin? %>
+            <div> 
+                <h2><%= @post.user.name + "さんの投稿" %></h2>
+            </div>
+            <div>
+                <%= render partial: 'admin/posts/form' %>
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+    

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+  end  
+
   root to: 'posts#index'
 
   resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do

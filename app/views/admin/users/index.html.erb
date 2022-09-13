@@ -1,0 +1,18 @@
+<h2>ユーザー一覧ページ</h2>
+
+<div>
+    <% @users.each do |user| %>
+        <p>名前:<%= user.name %></p>
+        <%= link_to user.name, admin_user_path(user.id) %>
+        <p>email:<%= user.email %></p>
+        <p>生年月日:<%= user.birth %></p>
+        <p>性別:<%= user.gender %></p>
+        <p>所属校:<%= user.affiliation %></p>
+        <p>職名:<%= user.job_title %></p>
+        <p>教員歴:<%= user.career %></p>
+        <p>校務分掌:<%= user.responsible %></p>
+        <p>教科:<%= user.subject %></p>
+        <p>担当学年:<%= user.grade %></p>
+        <p>その他:<%= user.other %></p><br>
+    <% end %>
+</div>
