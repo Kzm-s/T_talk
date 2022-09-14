@@ -8,6 +8,24 @@ ActiveAdmin.register Post do
     f.actions
   end
 
+  show do
+    attributes_table do
+      row :user
+      row :post_type
+      row :title
+      row :content
+      row :image do |ad|
+        if post.image?
+          image_tag ad.image.url, size: '280x240'
+        end
+      end
+      row :status
+      row :created_at
+      row :updated_at
+    end
+    active_admin_comments
+  end
+
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
