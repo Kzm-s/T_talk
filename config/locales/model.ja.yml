@@ -10,6 +10,7 @@ ja:
       relationship: "フォロー・フォロワー"
       user_room: "ユーザーとルーム"
       message: "メッセージ"
+      notice: "お知らせ"
     attributes:
       admin_user:
         id: "登録番号"
@@ -44,3 +45,6 @@ ja:
         current_sign_in_at: "ログイン状態"
         sign_in_count: "ログイン回数"
         created_at: "作成日"
+      notice:
+        title: "タイトル"
+        content: "内容"
