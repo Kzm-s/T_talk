@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   
   def index
       @posts = Post.all
+      @notices = Notice.all.order(created_at: :desc)
 
     #タグ検索
     if params[:tag_ids]
@@ -62,6 +63,10 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:type, :title, :content, :image, :status, tag_ids: []).merge(user_id: current_user.id)
+    end
+
+    def set_post
+        @post = Post.find(params[:id])
     end
     
 end

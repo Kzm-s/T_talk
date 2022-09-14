@@ -15,6 +15,17 @@
         <button><%= link_to "ログイン", new_user_session_path %></button>
       <% end %>
   </div><br>
+
+  <div class="post">
+    <% @notices.first(3).each do |notice| %>
+      <div class="post-body">
+        <h2>お知らせ</h2>
+        <h4 class="post-title"><%= notice.title %></h4>
+        <p class="post-text"><%= notice.content %></p>
+        <p class="post-time"><small><%= notice.created_at.strftime('%Y.%m.%d') %></small></p>
+      </div>
+    <% end %>
+  </div>
   
   <div>
     <button><%= link_to "新規投稿", new_post_path %></button>
