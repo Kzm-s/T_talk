@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @published_posts = Post.where(user_id: @user.id, status: :open).order(params[:sort]).page(params[:page]).per(12)
         #current_userが既にルームに参加しているか判断
         @currentUserRoom = UserRoom.where(user_id: current_user.id)
         #他の@userがルームに参加しているか判断
@@ -33,5 +34,19 @@ class UsersController < ApplicationController
           end
     end
 
+
+    def likes
+      @user = User.find(params[:id])
+      @likes= Like.where(user_id: @user.id).pluck(:post_id)
+      @like_posts = Post.where(id: @likes, status: :open)
+      @like_posts_count = @like_posts.size
+    end
+
+
+
+    def confirms
+      @user = User.find(params[:id])
+      @confirm_posts = Post.where(user_id: @user.id, status: :hidden).order(params[:sort]).page(params[:page]).per(12)
+    end
 
 end

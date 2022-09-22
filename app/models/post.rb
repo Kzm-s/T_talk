@@ -14,6 +14,13 @@ class Post < ApplicationRecord
 
     def liked?(user)
         likes.where(user_id: user.id).exists?
-     end
+    end
+
+    with_options presence: true do
+        validates :title
+        validates :content
+        validates :status
+    end
+
 
 end
