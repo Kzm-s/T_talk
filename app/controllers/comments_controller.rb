@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
@@ -9,6 +10,7 @@ class CommentsController < ApplicationController
       render post_path(@post)
     end
   end
+
     def edit
         @post = Post.find(params[:post_id])
         @comment = Comment.find(params[:id])
@@ -24,12 +26,15 @@ class CommentsController < ApplicationController
         render 'edit'
       end
     end
+
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
         flash[:danger] = "コメントを削除しました"
         redirect_back(fallback_location: root_path)
     end
+
+
     
       private
       def comment_params

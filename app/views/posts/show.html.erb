@@ -41,11 +41,12 @@
 
 
         <h3>コメント一覧</h3>
-        <% @comments.each do |c| %>
-          <%= c.comment_content %><br>
+        <% @comments.each do |comment| %>
+          <%= comment.comment_content %><br>
           <% if user_signed_in? %>  
-            <% if current_user.id == @comment.user_id %>  
-              <button><%= link_to "削除", post_comment_path(@post, c), method: :delete %></button>
+            <% if current_user.id == comment.user_id %>  
+              <button><%= link_to "編集", edit_post_comment_path(@post) %></button>
+              <button><%= link_to "削除", post_comment_path(@post), method: :delete %></button>
             <% end %> <br>
           <% end %>  
         <% end %> 
