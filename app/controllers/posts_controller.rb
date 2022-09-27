@@ -24,26 +24,6 @@ class PostsController < ApplicationController
   end
 
 
-  def create
-    @post = Post.new(post_params)
-    # 投稿ボタンを押した場合
-    if params[:post]
-      if @post.save(context: :publicize)
-        redirect_to post_path(@post), notice: "投稿しました！"
-      else
-        render :new, alert: "投稿できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
-      end
-    # 下書きボタンを押下した場合
-    else
-      if @post.update(status: "hidden")
-        redirect_to user_path(current_user), notice: "下書き保存しました！"
-      else
-        render :new, alert: "保存できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
-      end
-    end
-  end
-
-
 
   def show
     @post = Post.find(params[:id])
@@ -55,8 +35,6 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-
-
 
 
   def create

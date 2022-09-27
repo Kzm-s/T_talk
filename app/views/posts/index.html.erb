@@ -52,8 +52,7 @@
         <div class="card mb-4 shadow-sm">
           <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
             <img class="card-img-top">
-            <strong>画像</strong><br>
-            <%= image_tag post.image.url %>
+            <%= image_tag post.image.url, size: '415x415' %>
           <% end %>
           <div class="card-body">
             <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->

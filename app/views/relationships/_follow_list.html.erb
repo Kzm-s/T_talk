@@ -1,5 +1,4 @@
-<% if @users.present? %>
-  <% users.each do |user| %>
+  <% @user.each do |user| %>
     <table>
       <thead>
         <tr>
@@ -17,6 +16,3 @@
       </tbody>
     </table>
   <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>

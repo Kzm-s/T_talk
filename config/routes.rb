@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'relationships/followers' => 'relationships#followers', as: 'followers'
+    get 'relationships/followings' => 'relationships#followings', as: 'followings'
 
     member do
       get :likes
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  resources :rooms, only: [:create, :index, :show]
+  resources :rooms, only: [:create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
