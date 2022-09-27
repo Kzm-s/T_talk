@@ -3,7 +3,8 @@
       <div class="user__wrapper">
         <h2 class="page-heading">
           <%= @user.name + "さんの情報" %>
-          <%= render partial: "relationships/follow_list", user: @user %>
+          <td>フォロー数: <%= @user.followings.count %></td>
+          <td>フォロワー数: <%= @user.followers.count %></td><br>
 
           <%= render partial: "relationships/follow_button", user: @user %>
           <p><%=link_to"お気に入り記事",likes_user_path(@user) %></p>
@@ -12,16 +13,17 @@
 
           <% unless @user.id == current_user.id %>
             <% if @haveRoom == true %> 
-              <%= link_to "ダイレクトメッセージ", room_path %>
+              <%= link_to "ダイレクトメッセージ", room_path(@roomId) %>
             <% else %>
               <%= form_with model: @room, local: true do |f|%> 
-                <%= fields_for @RoomUser do |r| %>
-                  <%= r.hidden_field :user_id, value: @user.id %>
+                <%= fields_for @RoomUser do |room| %>
+                  <%= room.hidden_field :user_id, value: @user.id %>
                 <% end %>
                 <%= f.submit "チャットを始める" %>
               <% end %>
             <% end %>
           <% end %>
+        
 
 
 
@@ -71,7 +73,6 @@
                 <div class="card mb-4 shadow-sm">
                 <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
                     <img class="card-img-top">
-                    <strong>画像</strong><br>
                     <%= image_tag post.image.url %>
                 <% end %>
                 <div class="card-body">

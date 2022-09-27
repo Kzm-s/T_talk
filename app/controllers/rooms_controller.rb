@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
     before_action :authenticate_user! 
     
+    
     def create
         @room = Room.create
         @entryCurrentUser = UserRoom.create(user_id: current_user.id, room_id: @room.id)
@@ -18,6 +19,13 @@ class RoomsController < ApplicationController
         else
             redirect_back(fallback_location: root_path)
         end
+
+
+        @is_checked = Message.where(room_id: @room.id)
+        @is_checked.where(is_check: false).each do |is_checked|
+            is_checked.update(is_check: true)
+        end
+
     end
 
     private

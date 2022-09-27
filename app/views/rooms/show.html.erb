@@ -18,11 +18,12 @@
       # メッセージ表示部分
       <div class="chat">
         <% if @messages.present? %>
-          <% @messages.each do |m| %>
+          <% @messages.each do |message| %>
             <div class="chat-box">
               <div class="chat-text">
-                <%= m.content %>
-                <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+                <%= message.content %>
+                <%= message.created_at.strftime("%Y-%m-%d %H:%M") %>
+                <%= @is_checked ? '既読' : '未読' %>
               </div>
             </div>
           <% end %>

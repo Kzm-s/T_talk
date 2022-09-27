@@ -12,7 +12,6 @@
     <div class="card mb-4 shadow-sm">
       <% if @post.image? %>  <!-- アップロード画像がある場合に実行する -->
         <img class="card-img-top">
-        <strong>画像</strong><br>
         <%= image_tag @post.image.url %>
       <% end %>
       <div class="card-body">

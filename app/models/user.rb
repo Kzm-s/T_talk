@@ -17,7 +17,6 @@ class User < ApplicationRecord
   has_many :positions, through: :user_positions, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
-  has_many :rooms, through: :user_rooms
   has_many :messages, dependent: :destroy
   
   # フォローをした、されたの関係
@@ -29,8 +28,11 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
 
+
   def follow(user_id)
-    relationships.create(follow_id: user_id)
+    unless self == user_id
+    self.relationships.find_or_create_by(follow_id: user_id.to_i, follower_id: self.id)
+    end
   end
   # フォローを外すときの処理
   def unfollow(user_id)
@@ -41,5 +43,5 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-
 end
+
