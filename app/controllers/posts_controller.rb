@@ -14,10 +14,10 @@ class PostsController < ApplicationController
           post_tags = post_tags.where(status: :open).order(params[:sort]).page(params[:page]).per(12)
           @posts = @posts.empty? ? post_tags : @posts & post_tags
         end
+      end
     end
   end
 
-  end
 
   def new
     @post = Post.new
@@ -61,6 +61,17 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
         redirect_to root_path
+    end
+  end
+
+  def search
+
+    if params[:keyword].present?
+      @posts = Post.where(status: :open).order(params[:sort]).page(params[:page]).per(12)
+      @posts_search = @posts.where('content LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts_search = Post.where(status: :open).order(params[:sort]).page(params[:page]).per(12)
     end
   end
 

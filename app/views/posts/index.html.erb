@@ -42,6 +42,15 @@
       <% end %><br>
       <button><%= link_to "検索リセット", root_path %></button>
     </div><br>
+    
+
+    <h3>投稿を検索</h3>
+    <div class="search-form">
+      <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+      <%= form.text_field :keyword %>
+      <%= form.submit "検索" %>
+    <% end %>
+    </div><br>
   
   
   <h3>投稿一覧</h3>

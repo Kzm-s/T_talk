@@ -16,6 +16,8 @@ class Post < ApplicationRecord
         likes.where(user_id: user.id).exists?
     end
 
+
+
     with_options presence: true do
         validates :title
         validates :content
