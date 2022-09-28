@@ -63,6 +63,16 @@ class UsersController < ApplicationController
       @confirm_posts = Post.where(user_id: @user.id, status: :hidden).order(params[:sort]).page(params[:page]).per(12)
     end
 
+    def followings
+      @user = User.find(params[:id])
+      @users = @user.followings
+    end
+  
+    def followers
+      @user = User.find(params[:id])
+      @users = @user.followers
+    end
+
     def user_params
       params.require(:user).permit(:name, :image, :email, :birth, :gender, :affiliation, :job_title, :career, :responsible, :subject, :grade, :other, :introduction, position_ids: [])
     end
