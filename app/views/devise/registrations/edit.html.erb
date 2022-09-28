@@ -1,196 +1,35 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <br>
-  <div class="field">
-    <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name, autofocus: true %>
+<div class="container">
+  <h1 class="form-title">アカウント情報編集</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 form-wrapper">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class = 'form-group'>
+          <%= f.label :name, "ユーザー名" %>
+          <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "最大10文字", maxlength: 10 %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :password, "パスワード変更" %><i> (変更したい場合)</i>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "パスワード変更(確認)" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :current_password %> <i>(変更にはパスワードが必要です)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password",class: "form-control", placeholder: "必須項目です" %>
+        </div>
+        <%= f.submit "変更する", class: "btn btn-primary form-submit-btn" %>
+        <%= link_to  "マイページへ", root_path, class: "link-below-user-form" %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :新しいパスワード %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, autofocus: true %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :job_title, '職名' %><br />
-    <%= f.label :job_title, :"校長" %>
-    <%= f.radio_button :job_title, :principal %>
-    <%= f.label :job_title, :"副校長" %>
-    <%= f.radio_button :job_title, :second_master %>
-    <%= f.label :job_title, :"教頭" %>
-    <%= f.radio_button :job_title, :head %>
-    <%= f.label :job_title, :"主幹教諭" %>
-    <%= f.radio_button :job_title, :senior_teacher %>
-    <%= f.label :job_title, :"指導教諭" %>
-    <%= f.radio_button :job_title, :leading_teacher %>
-    <%= f.label :job_title, :"指導主事" %>
-    <%= f.radio_button :job_title, :supervisor %><br />
-    <%= f.label :job_title, :"教諭" %>
-    <%= f.radio_button :job_title, :teacher %>
-    <%= f.label :job_title, :"養護教諭" %>
-    <%= f.radio_button :job_title, :school_nurce %>
-    <%= f.label :job_title, :"常勤講師" %>
-    <%= f.radio_button :job_title, :full_time_teacher %>
-    <%= f.label :job_title, :"非常勤講師" %>
-    <%= f.radio_button :job_title, :part_time_teacher %>
-    <%= f.label :job_title, :"その他" %>
-    <%= f.radio_button :job_title, :other %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :career, '教員歴' %><br />
-    <%= f.label :career, :"1年未満" %>
-    <%= f.radio_button :career, :under_one %>
-    <%= f.label :career, :"1年目" %>
-    <%= f.radio_button :career, :one %>
-    <%= f.label :career, :"2年目" %>
-    <%= f.radio_button :career, :two %>
-    <%= f.label :career, :"3年目" %>
-    <%= f.radio_button :career, :three %>
-    <%= f.label :career, :"4年目" %>
-    <%= f.radio_button :career, :four %><br />
-    <%= f.label :career, :"5年目" %>
-    <%= f.radio_button :career, :five %>
-    <%= f.label :career, :"6年目" %>
-    <%= f.radio_button :career, :six %>
-    <%= f.label :career, :"7年目" %>
-    <%= f.radio_button :career, :seven %>
-    <%= f.label :career, :"8年目" %>
-    <%= f.radio_button :career, :eight %>
-    <%= f.label :career, :"9年目" %>
-    <%= f.radio_button :career, :nine %><br />
-    <%= f.label :career, :"10年目" %>
-    <%= f.radio_button :career, :ten %>
-    <%= f.label :career, :"11年目" %>
-    <%= f.radio_button :career, :eleven %>
-    <%= f.label :career, :"12年目" %>
-    <%= f.radio_button :career, :twelve %>
-    <%= f.label :career, :"13年目" %>
-    <%= f.radio_button :career, :thirteen %>
-    <%= f.label :career, :"14年目" %><br />
-    <%= f.radio_button :career, :fourteen %>
-    <%= f.label :career, :"15年目" %>
-    <%= f.radio_button :career, :fifteen %>
-    <%= f.label :career, :"16年目" %>
-    <%= f.radio_button :career, :sixteen %>
-    <%= f.label :career, :"17年目" %>
-    <%= f.radio_button :career, :seventeen %>
-    <%= f.label :career, :"18年目" %>
-    <%= f.radio_button :career, :eighteen %>
-    <%= f.label :career, :"19年目" %>
-    <%= f.radio_button :career, :nineteen %><br />
-    <%= f.label :career, :"20年目" %>
-    <%= f.radio_button :career, :twenty %>
-    <%= f.label :career, :"20年以上" %>
-    <%= f.radio_button :career, :over_twenty %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :responsible, '校務分掌' %><br />
-    <%= f.text_field :responsible, autofocus: true %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :subject, '担当教科（主任）' %><br />
-    <%= f.label :subject, :"算数" %>
-    <%= f.radio_button :subject, :math %>
-    <%= f.label :subject, :"国語" %>
-    <%= f.radio_button :subject, :japanese %>
-    <%= f.label :subject, :"理科" %>
-    <%= f.radio_button :subject, :science %>
-    <%= f.label :subject, :"社会" %>
-    <%= f.radio_button :subject, :social_study %>
-    <%= f.label :subject, :"体育" %>
-    <%= f.radio_button :subject, :PE %>
-    <%= f.label :subject, :"音楽" %>
-    <%= f.radio_button :subject, :music %><br />
-    <%= f.label :subject, :"家庭" %>
-    <%= f.radio_button :subject, :home_economic %>
-    <%= f.label :subject, :"外国語" %>
-    <%= f.radio_button :subject, :english %>
-    <%= f.label :subject, :"図画工作" %>
-    <%= f.radio_button :subject, :arts_and_crafts %>
-    <%= f.label :subject, :"生活" %>
-    <%= f.radio_button :subject, :lifestyle %>
-    <%= f.label :subject, :"道徳" %>
-    <%= f.radio_button :subject, :moral %>
-    <%= f.label :subject, :"その他" %>
-    <%= f.radio_button :subject, :other %>
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :grade, '担当教科（主任）' %><br />
-    <%= f.label :grade, :"なし" %>
-    <%= f.radio_button :grade, :none %>
-    <%= f.label :grade, :"1年生" %>
-    <%= f.radio_button :grade, :first %>
-    <%= f.label :grade, :"2年生" %>
-    <%= f.radio_button :grade, :second %>
-    <%= f.label :grade, :"3年生" %>
-    <%= f.radio_button :grade, :third %><br />
-    <%= f.label :grade, :"4年生" %>
-    <%= f.radio_button :grade, :fourth %>
-    <%= f.label :grade, :"5年生" %>
-    <%= f.radio_button :grade, :fifth %>
-    <%= f.label :grade, :"6年生" %>
-    <%= f.radio_button :grade, :sixth %>
-    <%= f.label :grade, :"特別支援学級" %>
-    <%= f.radio_button :grade, :special %> 
-  </div>
-
-  <br>
-  <div class="field">
-    <%= f.label :other, 'その他' %><br />
-    <%= f.label :other, :"なし" %>
-    <%= f.radio_button :other, :none %>
-    <%= f.label :other, :"その他" %>
-    <%= f.radio_button :other, :other %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

@@ -1,0 +1,62 @@
+ja:
+  enums: 
+    user: # モデル名
+      gender:
+        man: '男性' # enumの値
+        shop: '女性' # enumの値
+      JobTitle: # カラム名
+        principal: '校長' # enumの値
+        second_master: '副校長' # enumの値
+        head: '教頭'
+        senior_teacher: '主幹教諭'
+        leading_teacher: '指導教諭'
+        supervisor: '指導主事'
+        teacher: '教諭'
+        school_nurce: '養護教諭'
+        full_time_teacher: '常勤講師'
+        part_time_teacher: '非常勤講師'
+        other: 'その他'
+      career:
+        under_one: '1年未満' # enumの値
+        one: '1年目' # enumの値
+        two: '２年目'
+        three: '３年目'
+        four: '4年目'
+        five: '5年目'
+        six: '6年目'
+        seven: '7年目'
+        eight: '8年目'
+        nine: '9年目'
+        ten: '10年目'
+        eleven: '11年目'
+        twelve: '12年目'
+        thirteen: '13年目'
+        fourteen: '14年目'
+        fifteen: '15年目'
+        sixteen: '16年目'
+        seventeen: '17年目'
+        eighteen: '18年目'
+        nineteen: '19年目'
+        twenty: '20年目'
+        over_twenty: '20年目以上'
+      subject: # カラム名
+        math: '算数' # enumの値
+        japanese: '国語' # enumの値
+        science: '理科'
+        social_study: '社会'
+        PE: '体育'
+        music: '音楽'
+        home_economic: '家庭科' 
+      gender: # カラム名
+        man: '男性' # enumの値
+        shop: '女性' # enumの値
+      gender: # カラム名
+        man: '男性' # enumの値
+        shop: '女性' # enumの値
+      gender: # カラム名
+        man: '男性' # enumの値
+        shop: '女性' # enumの値
+    customer: # モデル名
+      privacy: # カラム名
+        published: 公開 # enumの値
+        closed: 非公開 # enumの値
