@@ -4,8 +4,9 @@
         <h2 class="page-heading">
           <%= @user.name + "さんの情報" %>
           <%= render partial: "relationships/follow_button", user: @user %><br>
-          <td>フォロー数: <%= @user.followings.count %></td>
-          <td>フォロワー数: <%= @user.followers.count %></td><br>
+         
+          <td>フォロー数:  <%= link_to @user.followings.count, followings_user_path(@user) %></td>
+          <td>フォロワー数:  <%= link_to @user.followers.count, followers_user_path(@user) %></td><br>
 
           <%= link_to "ログイン情報編集", edit_user_registration_path(@user) %><br>
           <%= link_to "プロフィール情報編集", edit_user_path(@user) %><br>
