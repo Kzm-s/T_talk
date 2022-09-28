@@ -3,12 +3,14 @@
       <div class="user__wrapper">
         <h2 class="page-heading">
           <%= @user.name + "さんの情報" %>
+          <%= render partial: "relationships/follow_button", user: @user %><br>
           <td>フォロー数: <%= @user.followings.count %></td>
           <td>フォロワー数: <%= @user.followers.count %></td><br>
 
-          <%= render partial: "relationships/follow_button", user: @user %>
+          <%= link_to "ログイン情報編集", edit_user_registration_path(@user) %><br>
+          <%= link_to "プロフィール情報編集", edit_user_path(@user) %><br>
           <p><%=link_to"お気に入り記事",likes_user_path(@user) %></p>
-          <%=link_to "下書き一覧", confirms_user_path(@user) %>
+          <%=link_to "下書き一覧", confirms_user_path(@user) %><br>
 
 
           <% unless @user.id == current_user.id %>
@@ -28,6 +30,10 @@
 
 
         </h2>
+          <% if @user.image? %>
+            <%= image_tag @user.image.url, size: '415x415' %>
+          <% end %>
+
         <table class="table">
           <tbody>
             <tr>
@@ -56,6 +62,10 @@
               <tr>
                 <th class="table__col1">担当学年</th>
                 <td class="table__col2"><%= @user.grade %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">自己紹介</th>
+                <td class="table__col2"><%= @user.introduction %></td>
               </tr>
           </tbody>
         </table>
@@ -98,6 +108,7 @@
                 </div>
             </div>
           <% end %>
+          <button><%= link_to "投稿一覧に戻る", root_path %></button>
 
 
 

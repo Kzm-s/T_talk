@@ -1,3 +1,5 @@
 <h2>いいね一覧</h2>
-<%= @like_posts_count %><br>
-<%= render partial: "posts/post", collection: @like_posts %>
+  <%= render partial: "posts/post", collection: @like_posts %>
+  <p>いいね数<%= @like_posts_count %></p><br>
+
+  <button><%= link_to "投稿一覧に戻る", root_path %></button>

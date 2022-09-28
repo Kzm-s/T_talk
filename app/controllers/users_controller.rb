@@ -35,6 +35,19 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+      @user = User.find(params[:id])
+    end
+
+    def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        redirect_to use_path,success: "プロフィールを更新しました"
+      else
+        flash.now[:danger] = "プロフィールを更新できませんでした"
+      end
+    end
+
 
     def likes
       @user = User.find(params[:id])
@@ -48,6 +61,10 @@ class UsersController < ApplicationController
     def confirms
       @user = User.find(params[:id])
       @confirm_posts = Post.where(user_id: @user.id, status: :hidden).order(params[:sort]).page(params[:page]).per(12)
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :image, :email, :birth, :gender, :affiliation, :job_title, :career, :responsible, :subject, :grade, :other, :introduction, position_ids: [])
     end
 
 end
