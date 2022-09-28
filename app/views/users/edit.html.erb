@@ -22,10 +22,10 @@
   <br>
   <div class="field">
     <%= f.label :gender, '性別' %><br />
-    <%= f.label :gender, :"男性" %>
-    <%= f.radio_button :gender, :man %>
-    <%= f.label :gender, :"女性" %>
-    <%= f.radio_button :gender, :woman %>
+
+    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"),k]}%>
+
+
   </div>
 
   <br>
@@ -46,78 +46,14 @@
 
 
   <div class="field">
-    <%= f.label :JobTitle, '職名' %><br />
-    <%= f.label :JobTitle, :"校長" %>
-    <%= f.radio_button :JobTitle, :principal %>
-    <%= f.label :JobTitle, :"副校長" %>
-    <%= f.radio_button :JobTitle, :second_master %>
-    <%= f.label :JobTitle, :"教頭" %>
-    <%= f.radio_button :JobTitle, :head %>
-    <%= f.label :JobTitle, :"主幹教諭" %>
-    <%= f.radio_button :JobTitle, :senior_teacher %>
-    <%= f.label :JobTitle, :"指導教諭" %>
-    <%= f.radio_button :JobTitle, :leading_teacher %>
-    <%= f.label :JobTitle, :"指導主事" %>
-    <%= f.radio_button :JobTitle, :supervisor %><br />
-    <%= f.label :JobTitle, :"教諭" %>
-    <%= f.radio_button :JobTitle, :teacher %>
-    <%= f.label :JobTitle, :"養護教諭" %>
-    <%= f.radio_button :JobTitle, :school_nurce %>
-    <%= f.label :JobTitle, :"常勤講師" %>
-    <%= f.radio_button :JobTitle, :full_time_teacher %>
-    <%= f.label :JobTitle, :"非常勤講師" %>
-    <%= f.radio_button :JobTitle, :part_time_teacher %>
-    <%= f.label :JobTitle, :"その他" %>
-    <%= f.radio_button :JobTitle, :other %>
+    <%= f.label :job_title, '職名' %><br />
+    <%= f.select :job_title, User.job_titles.keys.map {|k| [I18n.t("enums.user.job_title.#{k}"),k]}%>
   </div>
   
   <br>
   <div class="field">
     <%= f.label :career, '教員歴' %><br />
-    <%= f.label :career, :"1年未満" %>
-    <%= f.radio_button :career, :under_one %>
-    <%= f.label :career, :"1年目" %>
-    <%= f.radio_button :career, :one %>
-    <%= f.label :career, :"2年目" %>
-    <%= f.radio_button :career, :two %>
-    <%= f.label :career, :"3年目" %>
-    <%= f.radio_button :career, :three %>
-    <%= f.label :career, :"4年目" %>
-    <%= f.radio_button :career, :four %><br />
-    <%= f.label :career, :"5年目" %>
-    <%= f.radio_button :career, :five %>
-    <%= f.label :career, :"6年目" %>
-    <%= f.radio_button :career, :six %>
-    <%= f.label :career, :"7年目" %>
-    <%= f.radio_button :career, :seven %>
-    <%= f.label :career, :"8年目" %>
-    <%= f.radio_button :career, :eight %>
-    <%= f.label :career, :"9年目" %>
-    <%= f.radio_button :career, :nine %><br />
-    <%= f.label :career, :"10年目" %>
-    <%= f.radio_button :career, :ten %>
-    <%= f.label :career, :"11年目" %>
-    <%= f.radio_button :career, :eleven %>
-    <%= f.label :career, :"12年目" %>
-    <%= f.radio_button :career, :twelve %>
-    <%= f.label :career, :"13年目" %>
-    <%= f.radio_button :career, :thirteen %>
-    <%= f.label :career, :"14年目" %><br />
-    <%= f.radio_button :career, :fourteen %>
-    <%= f.label :career, :"15年目" %>
-    <%= f.radio_button :career, :fifteen %>
-    <%= f.label :career, :"16年目" %>
-    <%= f.radio_button :career, :sixteen %>
-    <%= f.label :career, :"17年目" %>
-    <%= f.radio_button :career, :seventeen %>
-    <%= f.label :career, :"18年目" %>
-    <%= f.radio_button :career, :eighteen %>
-    <%= f.label :career, :"19年目" %>
-    <%= f.radio_button :career, :nineteen %><br />
-    <%= f.label :career, :"20年目" %>
-    <%= f.radio_button :career, :twenty %>
-    <%= f.label :career, :"20年以上" %>
-    <%= f.radio_button :career, :over_twenty %>
+    <%= f.select :career, User.careers.keys.map {|k| [I18n.t("enums.user.career.#{k}"),k]}%>
   </div>
 
   <br>
@@ -129,60 +65,19 @@
   <br>
   <div class="field">
     <%= f.label :subject, '担当教科（主任）' %><br />
-    <%= f.label :subject, :"算数" %>
-    <%= f.radio_button :subject, :math %>
-    <%= f.label :subject, :"国語" %>
-    <%= f.radio_button :subject, :japanese %>
-    <%= f.label :subject, :"理科" %>
-    <%= f.radio_button :subject, :science %>
-    <%= f.label :subject, :"社会" %>
-    <%= f.radio_button :subject, :social_study %>
-    <%= f.label :subject, :"体育" %>
-    <%= f.radio_button :subject, :PE %>
-    <%= f.label :subject, :"音楽" %>
-    <%= f.radio_button :subject, :music %><br />
-    <%= f.label :subject, :"家庭" %>
-    <%= f.radio_button :subject, :home_economic %>
-    <%= f.label :subject, :"外国語" %>
-    <%= f.radio_button :subject, :english %>
-    <%= f.label :subject, :"図画工作" %>
-    <%= f.radio_button :subject, :arts_and_crafts %>
-    <%= f.label :subject, :"生活" %>
-    <%= f.radio_button :subject, :lifestyle %>
-    <%= f.label :subject, :"道徳" %>
-    <%= f.radio_button :subject, :moral %>
-    <%= f.label :subject, :"その他" %>
-    <%= f.radio_button :subject, :other %>
+    <%= f.select :subject, User.subjects.keys.map {|k| [I18n.t("enums.user.subject.#{k}"),k]}%>
   </div>
 
   <br>
   <div class="field">
-    <%= f.label :grade, '担当教科（主任）' %><br />
-    <%= f.label :grade, :"なし" %>
-    <%= f.radio_button :grade, :none %>
-    <%= f.label :grade, :"1年生" %>
-    <%= f.radio_button :grade, :first %>
-    <%= f.label :grade, :"2年生" %>
-    <%= f.radio_button :grade, :second %>
-    <%= f.label :grade, :"3年生" %>
-    <%= f.radio_button :grade, :third %><br />
-    <%= f.label :grade, :"4年生" %>
-    <%= f.radio_button :grade, :fourth %>
-    <%= f.label :grade, :"5年生" %>
-    <%= f.radio_button :grade, :fifth %>
-    <%= f.label :grade, :"6年生" %>
-    <%= f.radio_button :grade, :sixth %>
-    <%= f.label :grade, :"特別支援学級" %>
-    <%= f.radio_button :grade, :special %> 
+    <%= f.label :grade, '担当学年' %><br />
+    <%= f.select :grade, User.grades.keys.map {|k| [I18n.t("enums.user.grade.#{k}"),k]}%>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :other, 'その他' %><br />
-    <%= f.label :other, :"なし" %>
-    <%= f.radio_button :other, :none %>
-    <%= f.label :other, :"その他" %>
-    <%= f.radio_button :other, :other %>
+    <%= f.select :other, User.others.keys.map {|k| [I18n.t("enums.user.other.#{k}"),k]}%>
   </div>
 
   <div class="field"><br>

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :likes, :confirms, :followings, :followers]
+
 
     def show
         @user = User.find(params[:id])
@@ -36,11 +39,12 @@ class UsersController < ApplicationController
     end
 
     def edit
-      @user = User.find(params[:id])
+      if current_user.id != @user.id
+        redirect_to root_path
+      end
     end
 
     def update
-      @user = User.find(params[:id])
       if @user.update(user_params)
         redirect_to use_path,success: "プロフィールを更新しました"
       else
@@ -50,7 +54,6 @@ class UsersController < ApplicationController
 
 
     def likes
-      @user = User.find(params[:id])
       @likes= Like.where(user_id: @user.id).pluck(:post_id)
       @like_posts = Post.where(id: @likes, status: :open)
       @like_posts_count = @like_posts.size
@@ -59,22 +62,28 @@ class UsersController < ApplicationController
 
 
     def confirms
-      @user = User.find(params[:id])
-      @confirm_posts = Post.where(user_id: @user.id, status: :hidden).order(params[:sort]).page(params[:page]).per(12)
+      if current_user.id == @user.id
+        @confirm_posts = Post.where(user_id: @user.id, status: :hidden).order(params[:sort]).page(params[:page]).per(12)
+      else
+        redirect_to root_path
+      end
     end
 
     def followings
-      @user = User.find(params[:id])
+
       @users = @user.followings
     end
   
     def followers
-      @user = User.find(params[:id])
       @users = @user.followers
     end
 
     def user_params
       params.require(:user).permit(:name, :image, :email, :birth, :gender, :affiliation, :job_title, :career, :responsible, :subject, :grade, :other, :introduction, position_ids: [])
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 
 end

@@ -7,11 +7,12 @@
          
           <td>フォロー数:  <%= link_to @user.followings.count, followings_user_path(@user) %></td>
           <td>フォロワー数:  <%= link_to @user.followers.count, followers_user_path(@user) %></td><br>
-
-          <%= link_to "ログイン情報編集", edit_user_registration_path(@user) %><br>
-          <%= link_to "プロフィール情報編集", edit_user_path(@user) %><br>
+          <% if current_user.id == @user.id %>
+            <%= link_to "ログイン情報編集", edit_user_registration_path(@user) %><br>
+            <%= link_to "プロフィール情報編集", edit_user_path(@user) %><br>
+            <%=link_to "下書き一覧", confirms_user_path(@user) %><br>
+          <% end %>
           <p><%=link_to"お気に入り記事",likes_user_path(@user) %></p>
-          <%=link_to "下書き一覧", confirms_user_path(@user) %><br>
 
 
           <% unless @user.id == current_user.id %>
@@ -47,22 +48,22 @@
             </tr>
             <tr>
               <th class="table__col1">職名</th>
-              <td class="table__col2"><%= @user.job_title %></td>
+              <td class="table__col2"><%= @user.job_title_i18n %></td>
             </tr>
             <tr>
               <th class="table__col1">教員歴</th>
-              <td class="table__col2"><%= @user.career %></td>
+              <td class="table__col2"><%= @user.career_i18n %></td>
             </tr>
             <tr>
                 <th class="table__col1">校務分掌</th>
                 <td class="table__col2"><%= @user.responsible %></td>
               </tr>            <tr>
                 <th class="table__col1">担当教科</th>
-                <td class="table__col2"><%= @user.subject %></td>
+                <td class="table__col2"><%= @user.subject_i18n %></td>
               </tr>
               <tr>
                 <th class="table__col1">担当学年</th>
-                <td class="table__col2"><%= @user.grade %></td>
+                <td class="table__col2"><%= @user.grade_i18n %></td>
               </tr>
               <tr>
                 <th class="table__col1">自己紹介</th>
@@ -99,7 +100,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                        <% if current_user.id == post.user.id %>
                         <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "編集", edit_post_path(post.id) %></button>
+                        <% end %>
                         <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                     </div>
                     <!-- <small class="text-muted">9 mins</small> -->
