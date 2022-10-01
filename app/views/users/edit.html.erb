@@ -23,7 +23,11 @@
   <div class="field">
     <%= f.label :gender, '性別' %><br />
 
-    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"),k]}%>
+
+    <%= f.collection_radio_buttons :gender, User.genders_i18n, :first , :last do |b|%>
+      <%= b.label(class: "mr-5") { b.radio_button(class: "form-check-input") + b.text }%>
+    <%end %>
+
 
 
   </div>
@@ -31,7 +35,7 @@
   <br>
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, autofocus: true %>
+    <%= f.text_field :affiliation, autofocus: true, required: true %>
   </div><br>
 
   <div class='field'>

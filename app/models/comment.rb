@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
     belongs_to :post
 
     validates :comment_content, presence: true
+    validates :status, presence: true
+
 end

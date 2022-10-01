@@ -1,12 +1,12 @@
 ja:
-  enums: 
-    user: 
+  enums:
+    user:
       gender:
-        man: '男性' 
-        woman: '女性' 
-      job_title: 
-        principal: '校長' 
-        second_master: '副校長' 
+        man: '男性'
+        woman: '女性'
+      job_title:
+        principal: '校長'
+        second_master: '副校長'
         head: '教頭'
         senior_teacher: '主幹教諭'
         leading_teacher: '指導教諭'
@@ -17,8 +17,8 @@ ja:
         part_time_teacher: '非常勤講師'
         other: 'その他'
       career:
-        under_one: '1年未満' 
-        one: '1年目' 
+        under_one: '1年未満'
+        one: '1年目'
         two: '２年目'
         three: '３年目'
         four: '4年目'
@@ -39,8 +39,8 @@ ja:
         nineteen: '19年目'
         twenty: '20年目'
         over_twenty: '20年目以上'
-      subject: 
-        math: '算数' 
+      subject:
+        math: '算数'
         japanese: '国語'
         science: '理科'
         social_study: '社会'
