@@ -20,10 +20,11 @@ class RoomsController < ApplicationController
             redirect_back(fallback_location: root_path)
         end
 
-
-        @is_checked = Message.where(room_id: @room.id)
-        @is_checked.where(is_check: false).each do |is_checked|
-            is_checked.update(is_check: true)
+        @messages.each do |message|
+            if message.user_id != @current_user.id && message.is_check == false
+                message.is_check = true
+                message.save
+            end
         end
 
     end

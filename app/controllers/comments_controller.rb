@@ -3,11 +3,14 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    if @comment.save
+    @comments = Comment.where(status: :open, post_id: @post).order(params[:sort]).includes(:user)
+
+    if @comment.valid?
+      @comment.save
       redirect_to post_path(@post), notice: "コメントしました"
     else
       flash[:danger] = "投稿に失敗しました"
-      render post_path(@post)
+      render template: "posts/show"
     end
   end
 

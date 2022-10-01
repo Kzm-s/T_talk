@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_27_094750) do
+ActiveRecord::Schema.define(version: 2022_10_01_171650) do
 
   create_table "active_admin_comments", charset: "utf8", force: :cascade do |t|
     t.string "namespace"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_094750) do
     t.integer "birth", null: false
     t.integer "gender", null: false
     t.string "affiliation", null: false
-    t.string "job_title", null: false
+    t.integer "job_title", null: false
     t.integer "career", null: false
     t.string "responsible"
     t.integer "subject"
