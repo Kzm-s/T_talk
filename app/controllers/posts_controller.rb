@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
-    @posts = Post.where(status: :open).order(params[:sort]).page(params[:page]).per(12)
+    @posts = Post.where(status: :open).order(params[:sort]).page(params[:page]).per(18)
     @notices = Notice.all.order(created_at: :desc)
 
     #タグ検索
@@ -51,8 +51,9 @@ class PostsController < ApplicationController
 
 
   def update
-    if @post.update(post_params)
-      redirect_to root_path, alert: "投稿者ではありません"
+    if @post.valid?
+      @post.update(post_params)
+      redirect_to root_path
     else
         render :edit
     end

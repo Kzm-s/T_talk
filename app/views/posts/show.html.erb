@@ -52,11 +52,6 @@
         <% if user_signed_in? %>
           <%= form_with model: [@post, @comment] do |f| %>
             <%= f.text_area :comment_content, placeholder: "コメントする" %><br>
-            <%= f.label :status, '公開/非公開' %><br/>
-            <%= f.label :status, :"公開" %>
-            <%= f.radio_button :status, :open %>
-            <%= f.label :status, :"非公開" %>
-            <%= f.radio_button :status, :hidden %><br>
             <%= f.submit "SEND" %>
           <% end %>
         <% end %>

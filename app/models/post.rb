@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-    enum post_type: { education: 0, advise: 1, }, _prefix: true
+    enum post_type: { education: 0, advise: 1, other: 3 }, _prefix: true
     enum status: { open: 0, hidden: 1 }, _prefix: true
     self.inheritance_column = :_type_disabled
 
@@ -18,11 +18,10 @@ class Post < ApplicationRecord
 
 
 
-    with_options presence: true do
+    with_options presence: true, on: :publicize do
         validates :title
         validates :content
         validates :status
+        validates :post_tags
     end
-
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_01_171650) do
+ActiveRecord::Schema.define(version: 2022_10_03_143723) do
 
   create_table "active_admin_comments", charset: "utf8", force: :cascade do |t|
     t.string "namespace"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_10_01_171650) do
     t.bigint "post_id"
     t.bigint "user_id"
     t.string "comment_content"
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"

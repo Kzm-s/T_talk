@@ -45,5 +45,16 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  with_options presence: true do
+    validates :name
+    validates :email, uniqueness: true
+    validates :gender
+    validates :affiliation
+    validates :job_title
+    validates :career
+    validates :subject
+    validates :introduction
+  end
+
 end
 

@@ -23,7 +23,7 @@
               <div class="chat-text">
                 <%= message.content %>
                 <%= message.created_at.strftime("%Y-%m-%d %H:%M") %>
-                <%= message.is_check %>
+                <%= message.is_check ? '既読' : '未読' %>
               </div>
             </div>
           <% end %>

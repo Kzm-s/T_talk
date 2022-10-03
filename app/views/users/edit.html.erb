@@ -16,26 +16,21 @@
   <br>
   <div class="field">
     <%= f.label :birth, '生年月日' %><br />
-    <%= f.text_field :birth, autofocus: true %>
+    <%= f.text_field :birth, placeholder:'2022年1月1日', autofocus: true %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :gender, '性別' %><br />
-
-
     <%= f.collection_radio_buttons :gender, User.genders_i18n, :first , :last do |b|%>
       <%= b.label(class: "mr-5") { b.radio_button(class: "form-check-input") + b.text }%>
     <%end %>
-
-
-
   </div>
 
   <br>
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, autofocus: true, required: true %>
+    <%= f.text_field :affiliation, placeholder:'例 ○○県××市立△△小学校', autofocus: true %>
   </div><br>
 
   <div class='field'>
@@ -63,12 +58,12 @@
   <br>
   <div class="field">
     <%= f.label :responsible, '主な校務分掌' %><br />
-    <%= f.text_field :responsible, autofocus: true %>
+    <%= f.text_field :responsible, placeholder:'校務分掌がない場合は”なし”とご入力ください。', autofocus: true %>
   </div>
 
   <br>
   <div class="field">
-    <%= f.label :subject, '担当教科（主任）' %><br />
+    <%= f.label :subject, '主な担当教科' %><br />
     <%= f.select :subject, User.subjects.keys.map {|k| [I18n.t("enums.user.subject.#{k}"),k]}%>
   </div>
 
@@ -81,12 +76,14 @@
   <br>
   <div class="field">
     <%= f.label :other, 'その他' %><br />
-    <%= f.select :other, User.others.keys.map {|k| [I18n.t("enums.user.other.#{k}"),k]}%>
+    <%= f.collection_radio_buttons :other, User.others_i18n, :first , :last do |b|%>
+      <%= b.label(class: "mr-5") { b.radio_button(class: "form-check-input") + b.text }%>
+    <%end %>
   </div>
 
   <div class="field"><br>
     <%= f.label :introduction, "自己紹介" %><br/>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introduction, placeholder:'（例）よろしくお願いします！' %>
   </div>
 
    <%= f.submit "更新", class: "btn btn-primary"%>

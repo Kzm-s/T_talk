@@ -45,10 +45,11 @@ class UsersController < ApplicationController
     end
 
     def update
-      if @user.update(user_params)
-        redirect_to use_path,success: "プロフィールを更新しました"
+      if @user.valid?
+        @user.update(user_params)
+        redirect_to user_path,success: "プロフィールを更新しました"
       else
-        flash.now[:danger] = "プロフィールを更新できませんでした"
+        render :edit
       end
     end
 
