@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
     def update
       @post = Post.find(params[:post_id])
       @comment = Comment.find(params[:id])
-      if @comment.update(comment_params)
+      if @comment.valid?
+        @comment.update(comment_params)
         redirect_to post_path(@post), notice: "コンテンツを投稿しました"
       else
         flash.now[:danger] = "投稿に失敗しました"

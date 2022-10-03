@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, placeholder:'学校太郎', autofocus: true %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, placeholder:'(例)t-talk@school.com', autofocus: true, autocomplete: "email" %>
   </div>
 
   <br>
@@ -40,19 +40,20 @@
   <br>
   <div class="field">
     <%= f.label :birth, '生年月日' %><br />
-    <%= f.text_field :birth, autofocus: true %>
+    <%= f.text_field :birth, placeholder:'(例)2022年1月1日', autofocus: true %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :gender, '性別' %><br />
-    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"),k]}%>
+    <%= f.collection_radio_buttons :gender, User.genders_i18n, :first , :last do |b|%>
+      <%= b.label(class: "mr-5") { b.radio_button(class: "form-check-input") + b.text }%>
+    <%end %>
   </div>
-
   <br>
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, autofocus: true %>
+    <%= f.text_field :affiliation, placeholder:'(例) ○○県××市立△△小学校', autofocus: true %>
   </div><br>
 
   <div class='field'>
@@ -68,7 +69,7 @@
 
   <div class="field">
     <%= f.label :job_title, '職名' %><br />
-    <%= f.select :job_title, User.JobTitles.keys.map {|k| [I18n.t("enums.user.JobTitle.#{k}"),k]}%>
+    <%= f.select :job_title, User.job_titles.keys.map {|k| [I18n.t("enums.user.job_title.#{k}"),k]}%>
   </div>
   
   <br>
@@ -80,7 +81,7 @@
   <br>
   <div class="field">
     <%= f.label :responsible, '主な校務分掌' %><br />
-    <%= f.text_field :responsible, autofocus: true %>
+    <%= f.text_field :responsible, placeholder:'校務分掌がない場合は”なし”とご入力ください。', autofocus: true %>
   </div>
 
   <br>
@@ -98,12 +99,14 @@
   <br>
   <div class="field">
     <%= f.label :other, 'その他' %><br />
-    <%= f.select :other, User.others.keys.map {|k| [I18n.t("enums.user.other.#{k}"),k]}%>
+    <%= f.collection_radio_buttons :other, User.others_i18n, :first , :last do |b|%>
+      <%= b.label(class: "mr-5") { b.radio_button(class: "form-check-input") + b.text }%>
+    <%end %>
   </div>
 
   <div class="field"><br>
     <%= f.label :introduction, "自己紹介" %><br/>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introduction, placeholder:'(例)よろしくお願いします！' %>
   </div>
 
   <div class="actions">

@@ -41,7 +41,7 @@ ja:
         over_twenty: '20年目以上'
       subject:
         math: '算数'
-        japanese: '国語'
+        japanese: 'p国語'
         science: '理科'
         social_study: '社会'
         PE: '体育'
@@ -64,5 +64,17 @@ ja:
       other:
         none: 'なし'
         other: 'その他'
-        
+    post:
+      post_type:
+        education: '教育'
+        advise: '相談'
+        other: 'その他'
+      status:
+        open: '公開'
+        hidden: '下書き'
+    comment:
+      status:
+        open: '公開'
+        hidden: '非公開'
+
 
