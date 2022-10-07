@@ -1,7 +1,7 @@
 <h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
   <br>
 
@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name, placeholder:'学校太郎', autofocus: true %>
+    <%= f.text_field :name, autofocus: true, placeholder:'最大10文字' %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, placeholder:'(例)t-talk@school.com', autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'xxx@email.com' %>
   </div>
 
   <br>
@@ -28,19 +28,19 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "半角英数6文字以上" %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :password（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "再度ご入力ください" %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :birth, '生年月日' %><br />
-    <%= f.text_field :birth, placeholder:'(例)2022年1月1日', autofocus: true %>
+    <%= f.text_field :birth, autofocus: true, placeholder:'xxxx年x月x日' %>
   </div>
 
   <br>
@@ -53,7 +53,7 @@
   <br>
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, placeholder:'(例) ○○県××市立△△小学校', autofocus: true %>
+    <%= f.text_field :affiliation, autofocus: true, placeholder:'○○県××市立△△小学校' %>
   </div><br>
 
   <div class='field'>

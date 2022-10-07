@@ -1,4 +1,27 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        name: '名前'
+        birth: '生年月日'
+        gender: "性別"
+        affiliation: "所属校"
+        job_title: "職名"
+        career: "教員歴"
+        responsible: "主な校務分掌"
+        subject: "担当教科"
+        grade: "担当学年"
+        other: "その他"
+        introduction: '自己紹介'
+      post:
+        title: 'タイトル'
+        content: '投稿内容'
+        post_type: '投稿のカテゴリ'
+        status: '公開範囲'
+      message:
+        content: 'メッセージ'
+      position:
+        name: '校務分掌'
   enums:
     user:
       gender:
