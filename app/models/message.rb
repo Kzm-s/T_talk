@@ -4,7 +4,5 @@ class Message < ApplicationRecord
 
 
 
-    with_options presence: true do
-        validates :content
-    end
+    validates :content, presence: true
 end

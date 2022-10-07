@@ -31,14 +31,15 @@
             <p>メッセージはまだありません</p>
         <% end %>
       </div>
-      #// メッセージ表示部分
+      #// メッセージ表示部分<br>
       
       # メッセージ投稿フォーム
       <div class="posts">
         <%= form_with model: @message, local: true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <%= f.text_field :content, placeholder: "メッセージを入力してください" %><br>
           <%= f.file_field :image %>
-          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.hidden_field :room_id, value: @room.id %><br>
           <%= f.submit "送信する" %>
         <% end %>
       </div>

@@ -21,11 +21,11 @@ ja:
       post:
         id: "投稿番号"
         user_id: "ユーザーid"
-        type: "投稿の種類"
+        type: "投稿のカテゴリ"
         title: "タイトル"
         content: "投稿内容"
         image: "画像"
-        status: "公開・非公開"
+        status: "公開範囲"
         created_at: "作成日"
         updated_at: "更新日"
       user:
@@ -45,8 +45,11 @@ ja:
         current_sign_in_at: "ログイン状態"
         sign_in_count: "ログイン回数"
         created_at: "作成日"
+      message:
+        content: 'メッセージ'
       notice:
         title: "タイトル"
         content: "内容"
+
 
 

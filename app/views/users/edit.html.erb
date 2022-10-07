@@ -10,13 +10,13 @@
 
   <div class="field">
     <%= f.label :name, '名前' %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, placeholder:'最大10文字' %>
   </div>
 
   <br>
   <div class="field">
     <%= f.label :birth, '生年月日' %><br />
-    <%= f.text_field :birth, placeholder:'2022年1月1日', autofocus: true %>
+    <%= f.text_field :birth, autofocus: true, placeholder:'xxxx年x月x日' %>
   </div>
 
   <br>
@@ -30,7 +30,7 @@
   <br>
   <div class="field">
     <%= f.label :affiliation, '所属校' %><br />
-    <%= f.text_field :affiliation, placeholder:'例 ○○県××市立△△小学校', autofocus: true %>
+    <%= f.text_field :affiliation, autofocus: true, placeholder:'○○県××市立△△小学校' %>
   </div><br>
 
   <div class='field'>
@@ -58,7 +58,7 @@
   <br>
   <div class="field">
     <%= f.label :responsible, '主な校務分掌' %><br />
-    <%= f.text_field :responsible, placeholder:'校務分掌がない場合は”なし”とご入力ください。', autofocus: true %>
+    <%= f.text_field :responsible, autofocus: true, placeholder:'校務分掌がない場合は”なし”とご入力ください。' %>
   </div>
 
   <br>
